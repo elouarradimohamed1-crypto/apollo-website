@@ -8,7 +8,6 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
-    // كنقلبو واش حنا في الصفحة الرئيسية، حيت scrollToSection كتخدم غير تما
     if (window.location.pathname !== '/') {
         window.location.href = '/#' + id;
         return;
@@ -34,8 +33,7 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-8">
             <button onClick={() => scrollToSection('home')} className="text-foreground hover:text-primary transition font-semibold">Home</button>
             
-            {/* زدت رابط الـ Blog هنا */}
-            <Link href="/blog" className="text-foreground hover:text-primary transition font-semibold">Blog</Link>
+            {/* حيدنا الـ Blog من هنا */}
             
             <button onClick={() => scrollToSection('installation')} className="text-foreground hover:text-primary transition font-semibold">Installation</button>
             <button onClick={() => scrollToSection('pricing')} className="text-foreground hover:text-primary transition font-semibold">Pricing</button>
@@ -69,8 +67,7 @@ export default function Header() {
           <nav className="md:hidden pb-4 space-y-2">
             <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition font-semibold">Home</button>
             
-            {/* زدت رابط الـ Blog للموبايل */}
-            <Link href="/blog" className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition font-semibold">Blog</Link>
+            {/* حيدنا الـ Blog من الموبايل حتى هو */}
             
             <button onClick={() => scrollToSection('installation')} className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition font-semibold">Installation</button>
             <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition font-semibold">Pricing</button>

@@ -258,7 +258,6 @@ export default function Home() {
               <button onClick={() => scrollToSection('home')} className="text-[#f8fafc] hover:text-[#2563eb] transition font-semibold">Home</button>
               
               {/* زدنا رابط الـ Blog هنا */}
-              <Link href="/blog" className="text-[#f8fafc] hover:text-[#2563eb] transition font-semibold">Blog</Link>
               
               <button onClick={() => scrollToSection('installation')} className="text-[#f8fafc] hover:text-[#2563eb] transition font-semibold">Installation</button>
               <button onClick={() => scrollToSection('pricing')} className="text-[#f8fafc] hover:text-[#2563eb] transition font-semibold">Pricing</button>
@@ -290,7 +289,6 @@ export default function Home() {
               <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-2 text-[#f8fafc] hover:text-[#2563eb] transition font-semibold">Home</button>
               
               {/* زدنا رابط الـ Blog للموبايل */}
-              <Link href="/blog" className="block w-full text-left px-4 py-2 text-[#f8fafc] hover:text-[#2563eb] transition font-semibold">Blog</Link>
               
               <button onClick={() => scrollToSection('installation')} className="block w-full text-left px-4 py-2 text-[#f8fafc] hover:text-[#2563eb] transition font-semibold">Installation</button>
               <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-4 py-2 text-[#f8fafc] hover:text-[#2563eb] transition font-semibold">Pricing</button>

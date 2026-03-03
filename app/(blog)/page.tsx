@@ -1,38 +1,24 @@
-import Link from 'next/link';
-
 export default async function BlogPage() {
-  try {
-    const res = await fetch('https://backend.appoloiptv.com/wp-json/wp/v2/posts?_embed', {
-      next: { revalidate: 60 }
-    });
-    
-    const posts = await res.json();
+  const res = await fetch('https://backend.appoloiptv.com/wp-json/wp/v2/posts', { cache: 'no-store' });
+  const posts = await res.json();
 
-    return (
-      <div className="min-h-screen bg-black text-white p-8">
-        <h1 className="text-4xl font-bold mb-10 text-center">Apollo Blog</h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {posts.map((post: any) => (
-            // لاحظ هنا: حيدنا كلمة /blog/ من الرابط
-            <Link href={`/${post.slug}`} key={post.id} className="group border border-gray-800 rounded-2xl p-4 hover:border-blue-500 transition-all">
-              {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-                <img 
-                  src={post._embedded['wp:featuredmedia'][0].source_url} 
-                  className="w-full h-48 object-cover rounded-xl mb-4"
-                  alt={post.title.rendered}
-                />
-              )}
-              <h2 className="text-xl font-bold group-hover:text-blue-400" 
-                  dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-              <div className="text-gray-400 text-sm mt-2 line-clamp-2"
-                   dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-            </Link>
-          ))}
-        </div>
+  return (
+    <div className="p-20 text-white bg-black min-h-screen">
+      <h1 className="text-2xl mb-4">Debug Blog Page</h1>
+      <p>Number of posts found: {posts.length}</p>
+      
+      {/* هاد السطر غادي يوريك كاع الداتا اللي جاية من ووردبريس ديريكت في الشاشة */}
+      <pre className="bg-gray-900 p-4 rounded mt-4 overflow-auto max-h-96 text-xs">
+        {JSON.stringify(posts, null, 2)}
+      </pre>
+
+      <div className="mt-10">
+        {posts.map((post: any) => (
+          <div key={post.id} className="mb-4 p-4 border border-gray-700">
+            {post.title.rendered} - <span className="text-blue-500">{post.slug}</span>
+          </div>
+        ))}
       </div>
-    );
-  } catch (error) {
-    return <div className="text-white text-center p-10">Error loading posts.</div>;
-  }
+    </div>
+  );
 }
