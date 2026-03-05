@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Tv } from 'lucide-react'; // زدت أيقونة Tv كاختيار
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,10 +30,14 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             <button onClick={() => scrollToSection('home')} className="text-foreground hover:text-primary transition font-semibold">Home</button>
             
-            {/* حيدنا الـ Blog من هنا */}
+            {/* الرابط الجديد ديال القنوات */}
+            <Link href="/channels-list" className="text-foreground hover:text-primary transition font-semibold flex items-center gap-1">
+              <Tv size={18} />
+              Channels List
+            </Link>
             
             <button onClick={() => scrollToSection('installation')} className="text-foreground hover:text-primary transition font-semibold">Installation</button>
             <button onClick={() => scrollToSection('pricing')} className="text-foreground hover:text-primary transition font-semibold">Pricing</button>
@@ -67,7 +71,14 @@ export default function Header() {
           <nav className="md:hidden pb-4 space-y-2">
             <button onClick={() => scrollToSection('home')} className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition font-semibold">Home</button>
             
-            {/* حيدنا الـ Blog من الموبايل حتى هو */}
+            {/* الرابط الجديد في الموبايل */}
+            <Link 
+              href="/channels-list" 
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-left px-4 py-2 text-primary font-bold transition border-l-4 border-primary bg-blue-50"
+            >
+              📺 Channels List
+            </Link>
             
             <button onClick={() => scrollToSection('installation')} className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition font-semibold">Installation</button>
             <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-4 py-2 text-foreground hover:text-primary transition font-semibold">Pricing</button>

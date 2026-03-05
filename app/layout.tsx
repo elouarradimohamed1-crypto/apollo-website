@@ -1,10 +1,17 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Header from '@/components/header' // زدت هاد السطر باش السيستيم يعرف شنو هو Header
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geistSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
+})
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+})
 
 export const metadata: Metadata = {
   title: 'Apollo IPTV - Premium Streaming Service',
@@ -36,8 +43,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        {/* دابا Header غيخدم حيت درنا ليه Import الفوق */}
+        <Header /> 
+        
+        <main>
+          {children}
+        </main>
+
         <Analytics />
       </body>
     </html>
